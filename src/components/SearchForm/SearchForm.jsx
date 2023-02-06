@@ -6,26 +6,19 @@ import { Form, Input, SearchingButton, List } from './SearchForm.styled';
 import { MovieList2 } from '../MovieList/MovieList';
 
 export const SearchingForm = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieName = searchParams.get('query') ?? '';
+  const movieName = searchParams.get('query') || '';
 
-  //   const visibleMovies = movies.filter((movie) =>
-  //   movie.title.toLowerCase().includes(query.toLowerCase())
-  // );
+    const visibleMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(movieName.toLowerCase())
+  );
 
   const handleQueryChange = event => {
-    setSearchQuery(event.currentTarget.value.toLowerCase());
     setSearchParams({ query: event.target.value });
   };
 
-  // const updateQueryString = (query) => {
-  //   const nextParams = query !== "" ? {query} : {};
-  //   setSearchParams(nextParams);
-  // };
-
-  console.log(searchParams);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -46,7 +39,8 @@ export const SearchingForm = () => {
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"
-          value={movieName}
+          name="search"
+          // value={movieName}
           placeholder="Find a movie"
           onChange={handleQueryChange}
         />
@@ -55,7 +49,7 @@ export const SearchingForm = () => {
 
       {movies && (
         <List>
-          {movies.map(movie => (
+          {visibleMovies.map(movie => (
             <MovieList2 key={movie.id} movie={movie}></MovieList2>
           ))}
         </List>
