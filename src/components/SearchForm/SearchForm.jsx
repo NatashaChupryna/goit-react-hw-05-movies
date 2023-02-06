@@ -6,7 +6,7 @@ import { Form, Input, SearchingButton, List } from './SearchForm.styled';
 import { MovieList2 } from '../MovieList/MovieList';
 
 export const SearchingForm = () => {
-  // const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get("query") ?? '';
@@ -15,16 +15,17 @@ export const SearchingForm = () => {
 //   movie.title.toLowerCase().includes(query.toLowerCase())
 // );
 
-  // const handleQueryChange = event => {
-  //   setSearchQuery(event.currentTarget.value.toLowerCase());
-  //   setSearchParams({ query: event.target.value })
-  // };
-
-  const updateQueryString = (query) => {
-    const nextParams = query !== "" ? {query} : {};
-    setSearchParams(nextParams);
+  const handleQueryChange = event => {
+    setSearchQuery(event.currentTarget.value.toLowerCase());
+    setSearchParams({ query: event.target.value })
   };
 
+  // const updateQueryString = (query) => {
+  //   const nextParams = query !== "" ? {query} : {};
+  //   setSearchParams(nextParams);
+  // };
+
+  console.log(searchParams)
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -48,7 +49,7 @@ export const SearchingForm = () => {
           type="text"
           value={movieName}
           placeholder="Find a movie"
-          onChange={updateQueryString}
+          onChange={handleQueryChange}
         />
         <SearchingButton type="submit">Let`s go</SearchingButton>
       </Form>

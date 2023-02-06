@@ -1,8 +1,12 @@
 import React from "react";
+// import {useNavigate, useLocation} from 'react-router-dom'
 import {ListItem, MovieInfo, MovieTitle, Overview, MovieScore } from './MovieCard.styled'
 import defaultMovie from '../../images/defaultMovie.png'
 
 export const MovieCard = ({item}) => {
+// const navigate = useNavigate();
+// const location = useLocation();
+// const fromPage = location.state?from?.pathname; 
 
   return (
     
