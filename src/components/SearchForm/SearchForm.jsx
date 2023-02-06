@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
 import { getMovieByName } from '../API/MovieAPI';
 import toast from 'react-hot-toast';
 import { Form, Input, SearchingButton, List } from './SearchForm.styled';
@@ -11,13 +11,13 @@ export const SearchingForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('query') ?? '';
 
-//   const visibleMovies = movies.filter((movie) =>
-//   movie.title.toLowerCase().includes(query.toLowerCase())
-// );
+  //   const visibleMovies = movies.filter((movie) =>
+  //   movie.title.toLowerCase().includes(query.toLowerCase())
+  // );
 
   const handleQueryChange = event => {
     setSearchQuery(event.currentTarget.value.toLowerCase());
-    setSearchParams({ query: event.target.value })
+    setSearchParams({ query: event.target.value });
   };
 
   // const updateQueryString = (query) => {
@@ -25,7 +25,7 @@ export const SearchingForm = () => {
   //   setSearchParams(nextParams);
   // };
 
-  console.log(searchParams)
+  console.log(searchParams);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -41,7 +41,6 @@ export const SearchingForm = () => {
     event.target.reset();
   };
 
-
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -51,13 +50,13 @@ export const SearchingForm = () => {
           placeholder="Find a movie"
           onChange={handleQueryChange}
         />
-        <SearchingButton type="submit">Let`s go</SearchingButton>
+        <SearchingButton type="submit">&#128269; Let`s go</SearchingButton>
       </Form>
 
       {movies && (
         <List>
           {movies.map(movie => (
-            <MovieList2 key={movie.id}  movie={movie}></MovieList2>
+            <MovieList2 key={movie.id} movie={movie}></MovieList2>
           ))}
         </List>
       )}
