@@ -9,7 +9,7 @@ export const SearchingForm = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieName = searchParams.get("query") ?? '';
+  const movieName = searchParams.get('query') ?? '';
 
 //   const visibleMovies = movies.filter((movie) =>
 //   movie.title.toLowerCase().includes(query.toLowerCase())
