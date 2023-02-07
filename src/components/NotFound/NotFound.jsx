@@ -1,4 +1,4 @@
-import notFoundPage from '../images/notFoundPage.png'
+import notFoundPage from '../../images/notFoundPage.png'
 import styled from '@emotion/styled'
 
 export const NotFound = () =>{

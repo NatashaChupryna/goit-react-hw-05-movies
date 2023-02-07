@@ -9,9 +9,10 @@ export const List = styled.ul`
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    padding: 0;
 `
 export const ListItem =styled.li`
-width: 300px;
+flex-basis: 340px;
     display: flex;
     gap: 10px;
     flex-direction: column;

@@ -1,12 +1,9 @@
 import React from "react";
-// import {useNavigate, useLocation} from 'react-router-dom'
 import {ListItem, MovieInfo, MovieTitle, Overview, MovieScore } from './MovieCard.styled'
 import defaultMovie from '../../images/defaultMovie.png'
 
 export const MovieCard = ({item}) => {
-// const navigate = useNavigate();
-// const location = useLocation();
-// const fromPage = location.state?from?.pathname; 
+console.log('item',item)
 
   return (
     
@@ -14,7 +11,7 @@ export const MovieCard = ({item}) => {
       <img
         src={item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : defaultMovie}
         alt=""
-        width={300}
+        width={400}
       />
       <MovieInfo>
         <MovieTitle>{item.original_title}</MovieTitle>
@@ -26,9 +23,9 @@ export const MovieCard = ({item}) => {
           </b>
           <br />
           <br />
-          {/* <b>Genres : {item.genres.map(genre => (<span key={genre.id}>{genre.name}, </span>))}</b> 
+          {!item?.genres?.length ?<p>no info</p> : item.genres.map(genre => (<span key={genre.id}>{genre.name}, </span>))}
           <br />
-          <br /> // не виходить меп жанрів, жанри */}
+          <br /> 
         <b >Overview :</b>
         <Overview >{item.overview}</Overview>
         

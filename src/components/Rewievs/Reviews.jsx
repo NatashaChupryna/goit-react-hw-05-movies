@@ -1,35 +1,52 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from '../API/MovieAPI';
-
+import { Loader } from '../Loader/Loader';
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  const { id } = useParams;
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  console.log('Reviews id', id);
-  
+  const { id } = useParams();
+
+
   useEffect(() => {
+    setLoading(true);
     async function fetchReviews() {
       try {
-        const response = await getMovieReviews(505642);
+        const response = await getMovieReviews(id);
+        if (!response) {
+          setError('We don`t have reviews for this movie');
+        }
         setReviews(response);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
+        setError(null);
       }
     }
-    fetchReviews(505642);
+    fetchReviews();
   }, [id]);
 
   return (
-    <ul>
-      {reviews.map(item => (
-        <li key={item.id}>
-          {' '}
-          <b>{item.author}</b>
-          <p>{item.content}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      {loading && <Loader></Loader>}
+      
+      {!reviews.length ? <p>{error}</p> : <ul>
+        {reviews.map(item => (
+          <li key={item.id}>
+            <b>{item.author}</b>
+            <p>
+              &#8222;
+              {item.content}
+              &#8222;
+            </p>
+          </li>
+        ))}
+      </ul>}
+      
+    </>
   );
 };

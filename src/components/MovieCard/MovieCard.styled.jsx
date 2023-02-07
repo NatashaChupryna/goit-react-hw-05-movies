@@ -4,6 +4,7 @@ export const ListItem = styled.li`
     list-style: none;
     display: flex;
     gap: 20px;
+    margin-top: 15px;
 `
 export const MovieInfo =styled.div`
     text-align: left;

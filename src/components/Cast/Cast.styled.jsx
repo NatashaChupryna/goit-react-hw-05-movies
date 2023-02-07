@@ -3,6 +3,8 @@ import styled from '@emotion/styled'
 export const CastList = styled.ul`
     list-style: none;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
     padding: 0;

@@ -1,56 +1,54 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getMovieByName } from '../API/MovieAPI';
 import toast from 'react-hot-toast';
 import { Form, Input, SearchingButton, List } from './SearchForm.styled';
-import { MovieList2 } from '../MovieList/MovieList';
+import { MovieList } from '../MovieList/MovieList';
+import { Loader } from '../Loader/Loader';
 
 export const SearchingForm = () => {
-  // const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('query') || '';
 
-    const visibleMovies = movies.filter((movie) =>
+  const visibleMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(movieName.toLowerCase())
   );
 
-  const handleQueryChange = event => {
-    setSearchParams({ query: event.target.value });
+  const handleSubmit = event => {
+    event.preventDefault();
+    const form = event.target;
+    const queryString = form.search.value;
+    if (queryString === '') {
+      return toast.error('Enter movie name');
+    }
+    setSearchParams({ query: queryString });
+    form.reset();
   };
 
-
-  const handleSubmit = async event => {
-    event.preventDefault();
+  useEffect(() => {
     if (movieName === '') {
-      toast.error('Please enter your request');
       return;
     }
-    const movie = await getMovieByName(movieName);
-    if (!movie) {
-      throw new Error();
-    }
-    setMovies(movie.results);
-    event.target.reset();
-  };
+    setLoading(true);
+    getMovieByName(movieName).then(data => setMovies(data.results));
+    setLoading(false);
+  }, [movieName]);
 
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          name="search"
-          // value={movieName}
-          placeholder="Find a movie"
-          onChange={handleQueryChange}
-        />
+        <Input type="text" name="search" placeholder="Find a movie" />
         <SearchingButton type="submit">&#128269; Let`s go</SearchingButton>
       </Form>
+
+      {loading && <Loader></Loader>}
 
       {movies && (
         <List>
           {visibleMovies.map(movie => (
-            <MovieList2 key={movie.id} movie={movie}></MovieList2>
+            <MovieList key={movie.id} movie={movie}></MovieList>
           ))}
         </List>
       )}

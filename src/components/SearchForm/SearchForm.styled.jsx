@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 export const Form = styled.form`
       margin-top: 30px;
+      text-align: center;
 `
 
 export const Input = styled.input`

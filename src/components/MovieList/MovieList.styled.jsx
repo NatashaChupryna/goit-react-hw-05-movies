@@ -6,10 +6,11 @@ export const List = styled.ul`
     gap: 20px;
     flex-wrap: wrap;
     padding: 0;
+    padding-left: 25px;
     margin: 0;
 `
 export const ListItem =styled.li`
-width: 300px;
+flex-basis: calc((100% - 100px) / 4 );
     display: flex;
     gap: 10px;
     flex-direction: column;
