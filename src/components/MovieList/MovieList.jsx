@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
 import { ListItem } from './MovieList.styled';
 import defaultMovie from '../../images/defaultMovie.png';
 
 export const MovieList = ({ movie }) => {
   const location = useLocation();
+
 
   return (
     <ListItem key={movie.id}>
