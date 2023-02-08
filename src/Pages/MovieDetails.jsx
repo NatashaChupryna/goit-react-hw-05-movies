@@ -2,7 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../components/API/MovieAPI';
 import { MovieCard } from 'components/MovieCard/MovieCard';
-import { BsFillCameraReelsFill, BsFillChatRightQuoteFill } from 'react-icons/bs';
+import {
+  BsFillCameraReelsFill,
+  BsFillChatRightQuoteFill,
+} from 'react-icons/bs';
 import styled from '@emotion/styled';
 
 const MovieDetails = () => {
@@ -24,7 +27,6 @@ const MovieDetails = () => {
     createMovieCard(id);
   }, [id]);
 
-
   return (
     <>
       <BackButton to={locationRef.current}> &#8678; Back</BackButton>
@@ -34,13 +36,12 @@ const MovieDetails = () => {
       <List>
         <li>
           <StyledLink to="cast" state={{ from: location }}>
-            	
-<BsFillCameraReelsFill/> Cast
+            <BsFillCameraReelsFill /> Cast
           </StyledLink>
         </li>
         <li>
           <StyledLink to="reviews" state={{ from: location }}>
-           <BsFillChatRightQuoteFill/> Reviews
+            <BsFillChatRightQuoteFill /> Reviews
           </StyledLink>
         </li>
       </List>
