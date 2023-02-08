@@ -14,6 +14,7 @@ export const MovieTitle = styled.h2`
 `
 export const Overview = styled.p`
     width: 400px;
+    line-height: 1.25;
 `
 export const MovieScore = styled.span`
     font-weight: 600;

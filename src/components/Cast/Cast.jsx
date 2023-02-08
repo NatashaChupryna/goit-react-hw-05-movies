@@ -6,7 +6,7 @@ import defaultCast from '../../images/defaultCast.png';
 import { Loader } from '../Loader/Loader';
 import { getMovieCredits } from '../API/MovieAPI';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -49,3 +49,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast

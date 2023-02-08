@@ -21,6 +21,9 @@ export const Input = styled.input`
     }
 `
 export const SearchingButton = styled.button`
+/* display: flex;
+align-items: center;
+justify-content: center; */
 font-weight: 600;
   padding: 0.6em 2em;
   border: none;

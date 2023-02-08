@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { BsFillPersonFill } from 'react-icons/bs';
 import { getMovieReviews } from '../API/MovieAPI';
 import { Loader } from '../Loader/Loader';
+import { ReviewsList, AuthorName, AuthorText } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
-
 
   useEffect(() => {
     setLoading(true);
@@ -33,20 +34,23 @@ export const Reviews = () => {
   return (
     <>
       {loading && <Loader></Loader>}
-      
-      {!reviews.length ? <p>We don`t have reviews for this movie</p> : <ul>
-        {reviews.map(item => (
-          <li key={item.id}>
-            <b>{item.author}</b>
-            <p>
-              &#8222;
-              {item.content}
-              &#8222;
-            </p>
-          </li>
-        ))}
-      </ul>}
-      
+
+      {!reviews.length ? (
+        <p>We don`t have reviews for this movie</p>
+      ) : (
+        <ReviewsList>
+          {reviews.map(item => (
+            <li key={item.id}>
+              <AuthorName>
+                <BsFillPersonFill /> {item.author}
+              </AuthorName>
+              <AuthorText>{item.content}</AuthorText>
+            </li>
+          ))}
+        </ReviewsList>
+      )}
     </>
   );
 };
+
+export default Reviews;

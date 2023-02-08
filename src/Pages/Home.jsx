@@ -1,6 +1,6 @@
 import {PopularMovie} from '../components/PopularMovie/PopularMovie'
 
-export const Home = () => {
+ const Home = () => {
   
   return (
     <>
@@ -8,3 +8,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getMovieByName } from '../API/MovieAPI';
 import toast from 'react-hot-toast';
+import { FaSearch } from 'react-icons/fa';
 import { Form, Input, SearchingButton, List } from './SearchForm.styled';
 import { MovieList } from '../MovieList/MovieList';
 import { Loader } from '../Loader/Loader';
@@ -40,7 +41,7 @@ export const SearchingForm = () => {
     <>
       <Form onSubmit={handleSubmit}>
         <Input type="text" name="search" placeholder="Find a movie" />
-        <SearchingButton type="submit">&#128269; Let`s go</SearchingButton>
+        <SearchingButton type="submit"><FaSearch/> Let`s go</SearchingButton>
       </Form>
 
       {loading && <Loader></Loader>}

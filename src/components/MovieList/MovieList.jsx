@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link, useLocation} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ListItem } from './MovieList.styled';
 import defaultMovie from '../../images/defaultMovie.png';
 
 export const MovieList = ({ movie }) => {
   const location = useLocation();
 
-
   return (
-    <ListItem key={movie.id}>
-      <Link to={`movies/${movie.id}`} state={{ from: location }}>
+    <ListItem key={movie?.id}>
+      <Link to={`/movies/${movie.id}`} state={{ from: location }}>
         <img
           src={
             movie.poster_path

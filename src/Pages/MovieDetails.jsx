@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../components/API/MovieAPI';
 import { MovieCard } from 'components/MovieCard/MovieCard';
+import { BsFillCameraReelsFill, BsFillChatRightQuoteFill } from 'react-icons/bs';
 import styled from '@emotion/styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movieCard, setMovieCard] = useState([]);
   const { id } = useParams();
   const location = useLocation();
@@ -19,8 +20,10 @@ export const MovieDetails = () => {
         console.log(error);
       }
     }
+
     createMovieCard(id);
   }, [id]);
+
 
   return (
     <>
@@ -31,12 +34,13 @@ export const MovieDetails = () => {
       <List>
         <li>
           <StyledLink to="cast" state={{ from: location }}>
-            Cast
+            	
+<BsFillCameraReelsFill/> Cast
           </StyledLink>
         </li>
         <li>
           <StyledLink to="reviews" state={{ from: location }}>
-            Reviews
+           <BsFillChatRightQuoteFill/> Reviews
           </StyledLink>
         </li>
       </List>
@@ -49,6 +53,9 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
   transition: 300ms;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   &:hover {
     color: red;
   }
@@ -74,3 +81,4 @@ const BackButton = styled(Link)`
     color: red;
   }
 `;
+export default MovieDetails;

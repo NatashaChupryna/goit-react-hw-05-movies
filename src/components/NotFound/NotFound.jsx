@@ -1,7 +1,7 @@
 import notFoundPage from '../../images/notFoundPage.png'
 import styled from '@emotion/styled'
 
-export const NotFound = () =>{
+const NotFound = () =>{
     return(
         <Div>
             <h1>Page does not exist, go back to Home page</h1>
@@ -14,3 +14,5 @@ export const NotFound = () =>{
 const Div = styled.div`
     text-align: center;
 `
+
+export default NotFound

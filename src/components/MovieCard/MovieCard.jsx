@@ -9,6 +9,8 @@ import {
 import defaultMovie from '../../images/defaultMovie.png';
 
 export const MovieCard = ({ item }) => {
+const Date = item.release_date
+
   return (
     <ListItem key={item.id}>
       <img
@@ -22,7 +24,7 @@ export const MovieCard = ({ item }) => {
       />
       <MovieInfo>
         <MovieTitle>{item.original_title}</MovieTitle>
-        <b>Release date : {item.release_date}</b>
+        <b>Release date : {Date?.slice(0,4)}</b>
         <br />
         <br />
         <b>
@@ -44,3 +46,4 @@ export const MovieCard = ({ item }) => {
     </ListItem>
   );
 };
+

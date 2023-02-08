@@ -1,5 +1,7 @@
 import { SearchingForm } from '../components/SearchForm/SearchForm';
 
-export const Movies = () => {
+const Movies = () => {
   return <SearchingForm></SearchingForm>;
 };
+
+export default Movies;

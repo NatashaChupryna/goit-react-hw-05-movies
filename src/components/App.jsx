@@ -1,25 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-
 import { Toaster } from 'react-hot-toast';
-// працює :
-import SharedLayout  from './SharedLayout/SharedLayout';
-import { NotFound } from './NotFound/NotFound';
-import { Home } from '../Pages/Home';
-import { Movies } from '../Pages/Movies';
-import { MovieDetails } from '../Pages/MovieDetails';
-import { Cast } from '../components/Cast/Cast';
-import { Reviews } from '../components/Rewievs/Reviews';
+import { lazy } from 'react';
 
-
-
-// не працює
-// import { lazy } from "react";
-// const Home = lazy(() => import('../Pages/Home'));
-// const Movies = lazy(() => import('../Pages/Movies'));
-// const MovieDetails = lazy(() => import('../Pages/MovieDetails'));
-// const Cast = lazy(() => import('./Cast/Cast'));
-// const Reviews = lazy(() => import('./Rewievs/Reviews'));
-// const NotFound = lazy(() => import('./NotFound/NotFound'))
+const SharedLayout = lazy(() =>
+  import('../components/SharedLayout/SharedLayout')
+);
+const Home = lazy(() => import('../Pages/Home'));
+const Movies = lazy(() => import('../Pages/Movies'));
+const MovieDetails = lazy(() => import('../Pages/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Rewievs/Reviews'));
+const NotFound = lazy(() => import('./NotFound/NotFound'));
 
 const App = () => {
   return (
@@ -41,4 +32,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;
